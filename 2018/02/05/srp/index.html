@@ -6,12 +6,14 @@
 
     <!-- Title -->
     
-    <title>s-o-l-i-d - Mfilho</title>
+    <title>Coesão?! Só Com SRP! - Mfilho</title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <!--Description-->
+    
+        <meta name="description" content="Sua aplicação tem classes com milhares de linhas? Uma única classe possui diversas responsabilidades? Você precisa abrir a caixa de busca da sua IDE p">
     
 
     <!--Author-->
@@ -25,6 +27,8 @@
     
 
     <!--Open Graph Title-->
+    
+        <meta property="og:title" content="Coesão?! Só Com SRP!"/>
     
 
     <!--Open Graph Site Name-->
@@ -89,23 +93,9 @@
 		<div id="main">
 
       <!-- Main Content -->
-      
-  
-  
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year">
-          <a href="/archives/2018" class="archive-year">2018</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <div class="meta">
+      <!-- One -->
+<section id="one">
+  <div class="meta">
   
       <span class="date">
           05-02-2018
@@ -126,7 +116,8 @@
 
 </div>
 
-      
+
+
     
       <h1 itemprop="name">
         Coesão?! Só Com SRP!
@@ -134,11 +125,15 @@
     
   
 
-    </header>
 
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Sua aplicação tem classes com milhares de linhas? Uma única classe possui diversas responsabilidades? Você precisa abrir a caixa de busca da sua IDE para buscar um método? Se você acha seu sistema coeso, mesmo após responder “Sim” para essas perguntas, você precisa conhecer o Princípio da Responsabilidade Única ou SRP! </p>
+
+
+<!-- Gallery -->
+
+
+
+<!-- Content -->
+<p>Sua aplicação tem classes com milhares de linhas? Uma única classe possui diversas responsabilidades? Você precisa abrir a caixa de busca da sua IDE para buscar um método? Se você acha seu sistema coeso, mesmo após responder “Sim” para essas perguntas, você precisa conhecer o Princípio da Responsabilidade Única ou SRP! </p>
 <p>Imagem </p>
 <p>Continuando a série sobre <a href="http://mfilho.com.br/2018/01/27/S-O-L-I-D/" target="_blank" rel="noopener">S.O.L.I.D</a> que comecei no post anterior, vou falar sobre SRP. Ele é a base para todos os outros princípios, arrisco a dizer, que é o mais importante, pois a sua aplicação, melhora e muito a organização do seu código. </p>
 <p>Mais coesão e menos canivete suíço! </p>
@@ -162,77 +157,32 @@
 <p>Utilizei a interface para auxiliar na abstração, mas não irei aprofundar no assunto agora, pois iremos aborda-lo mais adiante, em um outro Princípio.</p>
 <p>Uma coisa que pode ser observada, é que optei transformar os métodos privados em classes, pois auxilia no reuso do codigo. Um método grande, jámais deve ser quebrado em métodos pequenos, pois vai atrapalhar no reuso. provavelmente ferir o SRP, Métodos privados devem ser utilizados somente para auxilizar na leitura do codígo.</p>
 
-      
+
+<!-- Tags -->
+
+
+
+<div class="tags">
+    <a href="/tags/s-o-l-i-d/" class="button small">s-o-l-i-d</a> <a href="/tags/orientacao-a-objeto/" class="button small">orientação-a-objeto</a> <a href="/tags/srp/" class="button small">srp</a>
+</div>
+
+
+<!-- Comments -->
+<div>
+    
+
+    <hr />
+    <h3>comment:</h3>
+    <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
     </div>
-  </div>
-</article>
 
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <div class="meta">
-  
-      <span class="date">
-          27-01-2018
-      </span>
-  
-
-  
-    <span class="meta-separator"> | </span>
-  
-
-  
-  
-  <span class="article-category">
-    <a class="article-category-link" href="/categories/orientacao-a-objetos/">orientacao-a-objetos</a>
-  </spamn>
 
 
 
 </div>
 
-      
-    
-      <h1 itemprop="name">
-        O Que É Esse Tal De S.O.L.I.D?
-      </h1>
-    
-  
-
-    </header>
-
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><br></p>
-<blockquote><p>“Desenvolver software a partir dos requisitos e andar sobre água é fácil desde que ambos estejam congelados.” (Edward V. Berard )</p>
-</blockquote>
-<p>No mundo de hoje, fala-se muito em linguagens diferentes, frameworks Javascript (nasce um toda vez que um chinesinho respira). Pois bem… O que vou falar hoje é sobre o S.O.L.I.D. Muitas pessoas o conhecem, já outras nunca ouviram falar, não se preocupe se você é iniciante ou não em programação. Este é um post introdutório que visa trazer um pouco do que é esse tal de S.O.L.I.D.  </p>
-<p>No inicio dos anos 2000, um engenheiro de software chamado Robert C. Martin, mais conhecido como Uncle Bob, juntou algumas práticas de desenvolvimento e abordou todas em um livro chamado : <strong>Agile</strong> Principles, Patterns, and Practices. Sua primeira edição foi lançada em C++ e Java, posteriormente, buscando atrair a comunidade .Net, lançou uma versão com sua aplicação em C# (Csharp). Contudo, quem batizou com o acrônimo S.O.L.I.D, foi Michael Feathers.  </p>
-<h2 id="Na-verdade-S-O-L-I-D-e-um-acronimo-usado-para-denominar-5-principios"><a href="#Na-verdade-S-O-L-I-D-e-um-acronimo-usado-para-denominar-5-principios" class="headerlink" title="Na verdade S.O.L.I.D é um acrônimo usado para denominar 5 princípios:"></a><strong>Na verdade S.O.L.I.D é um acrônimo usado para denominar 5 princípios:</strong></h2><p><strong>S</strong> - Single Resposability Principle (Princípio da responsabilidade Única)<br><strong>O</strong> - Open Close Principle (Princípio do Aberto/Fechado)<br><strong>L</strong> - Liskov Segregation Principle (Princípio da Segregação de Liskov)<br><strong>I</strong> - Interface Segregation Principle (Princípio da Segregação de Interface)<br><strong>D</strong> - Dependency Inversion Principle (Princípio da Inversão ou Injeção de Dependência)  </p>
-<p>Mas o que vale ser observado, não são as linguagens que foram usadas no livro, pois S.O.L.I.D não é um framework, uma biblioteca, uma tecnologia ou algo específico de uma linguagem. </p>
-<p>São princípios que podem ser implementado em QUALQUER linguagem que utilize Orientação a Objetos. Ele visa melhorar a legibilidade, extensibilidade, a manutenibilidade e a testabilidade do nosso código de forma que possa extrair o melhor que a Orientação a Objetos possa nos fornecer.</p>
-<h2 id="Qual-e-a-dificuldade-de-implementar-esses-principios"><a href="#Qual-e-a-dificuldade-de-implementar-esses-principios" class="headerlink" title="Qual é a dificuldade de implementar esses princípios?"></a><strong>Qual é a dificuldade de implementar esses princípios?</strong></h2><p>Quando o problema não é a falta de um SÓLIDO conhecimento no S.O.L.I.D (desculpe, não pude deixar passar o trocadilho), é o ritmo das empresas, pois a ela trabalha com prazo apertado para poder ter lucro e pagar suas dividas, em contra partida, o programador quer entregar o melhor código possível e aplicar os 5 princípios é uma coisa que leva tempo, pois você vai escrever mais codigo visando o futuro da aplicação, sua manutenção. Com isso entramos na máxima, Software não pode ser feito rapído E barato E de qualidade. </p>
-<h2 id="Sempre-devemos-aplicar-os-principios"><a href="#Sempre-devemos-aplicar-os-principios" class="headerlink" title="Sempre devemos aplicar os princípios?"></a><strong>Sempre devemos aplicar os princípios?</strong></h2><p>Essa é uma das principais dúvidas causadas pelo conhecimento nos cinco princípios, pois existem situações onde não seria necessário a aplicação de todo o conceito. S.O.L.I.D não é uma ciência exata e em algumas vezes, você pode pegar pequenos sistemas que só precisem do simples e puro OO, pois terá um prazo muito apertado e o sistema não será tão grande. Lembre-se, “Devemos usar um canhão para matar uma formiga?”.  De qualquer forma, para que seu codigo tenha o mínimo de qualidade, os dois primeiros princípios SRP e OCP, já evitariam alguns problemas, como complexidade e testabilidade. Mas isso é uma coisa que o tempo e a experiência vão te ajudar a perceber.</p>
-<p>Esse foi um post introdutório, com objetivo de falar um pouco da história dos cinco princípios, em breve estarei falando de cada princípio e sua aplicação.</p>
-<blockquote><p>“A essência do conhecimento consiste em aplicá-lo, uma vez possuído.”<br>(Confúcio)</p>
-</blockquote>
-<script src="//platform.linkedin.com/in.js" type="text/javascript"> lang: pt_BR</script>
-<script type="IN/Share" data-url="https://mfilho.com.br" data-counter="right"></script>
-      
-    </div>
-  </div>
-</article>
-
-  
-  
-    </div></section>
-  
-
-
-
+</section>
 
 
       <!-- Three - the contact form is on every page! -->
@@ -316,6 +266,43 @@
                 <script src="/js/main.js"></script>
                     <!-- Disqus Comments -->
                     
+                        <!-- <script type="text/javascript">
+                            var disqus_shortname = 'murillofilho';
+
+                            (function () {
+                                var dsq = document.createElement('script');
+                                dsq.type = 'text/javascript';
+                                dsq.async = true;
+                                dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+                                (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+                            }());
+                        </script> -->
+
+
+                        <div id="disqus_thread"></div>
+                        <script>
+
+                            /**
+                            *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+                            *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+                            /*
+                            var disqus_config = function () {
+                            this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+                            this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+                            };
+                            */
+                            (function () { // DON'T EDIT BELOW THIS LINE
+                                var d = document, s = d.createElement('script');
+                                s.src = 'https://http-mfilho-com-br.disqus.com/embed.js';
+                                s.setAttribute('data-timestamp', +new Date());
+                                (d.head || d.body).appendChild(s);
+                            })();
+                        </script>
+                        <noscript>Please enable JavaScript to view the
+                            <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+                        </noscript>
+                        <script id="dsq-count-scr" src="//http-mfilho-com-br.disqus.com/count.js" async></script>
+                        
 
 </body>
 </html>

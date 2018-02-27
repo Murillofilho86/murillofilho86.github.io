@@ -108,6 +108,74 @@
       <div class="meta">
   
       <span class="date">
+          05-02-2018
+      </span>
+  
+
+  
+    <span class="meta-separator"> | </span>
+  
+
+  
+  
+  <span class="article-category">
+    <a class="article-category-link" href="/categories/orientacao-a-objetos/">orientacao-a-objetos</a>
+  </spamn>
+
+
+
+</div>
+
+      
+    
+      <h1 itemprop="name">
+        Coesão?! Só Com SRP!
+      </h1>
+    
+  
+
+    </header>
+
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Sua aplicação tem classes com milhares de linhas? Uma única classe possui diversas responsabilidades? Você precisa abrir a caixa de busca da sua IDE para buscar um método? Se você acha seu sistema coeso, mesmo após responder “Sim” para essas perguntas, você precisa conhecer o Princípio da Responsabilidade Única ou SRP! </p>
+<p>Imagem </p>
+<p>Continuando a série sobre <a href="http://mfilho.com.br/2018/01/27/S-O-L-I-D/" target="_blank" rel="noopener">S.O.L.I.D</a> que comecei no post anterior, vou falar sobre SRP. Ele é a base para todos os outros princípios, arrisco a dizer, que é o mais importante, pois a sua aplicação, melhora e muito a organização do seu código. </p>
+<p>Mais coesão e menos canivete suíço! </p>
+<p>Segundo o dicionário coesão significa: União; harmonia; associação íntima. No desenvolvimento de software, quando falamos de coesão, nos referimos ao relacionamento de métodos, módulos ou classes tem entre si. </p>
+<p>Aqui entra o princípio da Responsabilidade Única ou SRP, pois o conceito de coesão está intimamente ligado a ele. Robert C. Martin (Ucle Bob), diz que uma classe deve ter apenas uma única responsabilidade e realiza-la de maneira satisfatória, ou seja, não deve assumir responsabilidades que não são suas. </p>
+<p>Agora, vamos a um exemplo sem aplicação do SRP</p>
+<figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">ServicoReserva</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">EfetuarReserva</span>(<span class="params">Reserva reserva</span>)</span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(reserva.TIPO == <span class="string">'aerea'</span>)&#123;</span><br><span class="line">            ReservarVoo(reserva)</span><br><span class="line">            SalvarReserva(reserva);</span><br><span class="line">         </span><br><span class="line">        &#125;<span class="keyword">else</span> <span class="keyword">if</span>(reserva.TIPO == <span class="string">'hotel'</span>)&#123;</span><br><span class="line">            ReservarQuarto(reserva);</span><br><span class="line">            SalvarReserva(reserva);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">string</span> <span class="title">ReservarVoo</span>(<span class="params">Reserva reserva</span>)</span>&#123;</span><br><span class="line">        <span class="comment">//Implementação </span></span><br><span class="line">        <span class="keyword">return</span> <span class="string">"Passagem aerea reservada com sucesso!"</span> ;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">string</span> <span class="title">ReservarQuarto</span>(<span class="params">Reserva reserva</span>)</span>&#123;</span><br><span class="line">        <span class="comment">//Implementação</span></span><br><span class="line">        <span class="keyword">return</span> <span class="string">"Quarto Reservado com sucesso!"</span> ;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">string</span> <span class="title">SalvarReserva</span>(<span class="params">Reserva reserva</span>)</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">       <span class="comment">//Implementação do metodo salvar reserva</span></span><br><span class="line">       <span class="keyword">return</span> <span class="string">"Reserva salva com sucesso!"</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Como vimos no exemplo a cima, a classe ServicoReserva, tem o método público EfetuarReserva onde nos deparamos com o problema. Ela, além de decidir qual é o tipo de reserva que irá realizar, ainda tem a responsabilidade salvar no banco de dados.  </p>
+<p><strong>Problema 1:</strong></p>
+<p>No momento, só existem dois tipos de reserva, mas e se tivéssemos um terceiro tipo? Por exemplo, uma reserva de ônibus, uma de bicicleta… Enfim, as possibilidades só aumentam e é isso que acontece em uma empresa, com o passar do tempo, coisas irão surgindo e nossa classe, só tende a aumentar, no final você estará com uma classe gigantesca, com uma infinidade de IFs aumentando complexidade do nosso código. </p>
+<p><strong>Problema 2:</strong>  </p>
+<p>Nossa classe, além de efetuar reserva, ainda é responsável por salvar no banco de dados?!  </p>
+<p>Aqui podemos ver claramente, que fere o princípio da responsabilidade única (SRP), nossa classe está salvando no banco e, em alguns cenários, ela pode conhecer os detalhes da conexão. Vamos melhorar isso? </p>
+<p>Começamos resolvendo o problema de Abstração criando a Interface<br><figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">interface</span> <span class="title">EfetuarReserva</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="function"><span class="keyword">string</span> <span class="title">Reservar</span>(<span class="params">Reserva reservar</span>)</span>;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
+<p>Agora, vamos criaremos as classes que irão herdar a Interface<br><figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">ReservaAerea</span> : <span class="title">EfetuarReserva</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">override</span> <span class="keyword">string</span> <span class="title">Reservar</span>(<span class="params">Reserva reservar</span>)</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="comment">//Implementação da reserva aerea</span></span><br><span class="line">    &#125;;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">ReservaHotel</span> : <span class="title">EfetuarReserva</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">override</span> <span class="keyword">string</span> <span class="title">Reservar</span>(<span class="params">Reserva reserva</span>)</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="comment">//Implementação da reserva do quarto</span></span><br><span class="line">    &#125;;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>Aqui criaremos a classe responsável por salvar no banco de dados<br><figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">ReservaDAO</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">Salvar</span>(<span class="params">Reserva reserva</span>)</span></span><br><span class="line"><span class="function">    </span>&#123;   </span><br><span class="line">        <span class="comment">//Implementação do método salvar</span></span><br><span class="line">        <span class="keyword">return</span> <span class="string">"Reserva salva com sucesso!"</span></span><br><span class="line">    &#125;;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
+<p>Por último, as classes de reserviço<br><figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">ServicoReservaAerea</span></span><br><span class="line">&#123;</span><br><span class="line">     ReservaAerea ra = <span class="keyword">new</span> ReservaAerea();</span><br><span class="line"></span><br><span class="line">     ra.Reservar(reserva);</span><br><span class="line"></span><br><span class="line">     ReservaDAO dao = <span class="keyword">new</span> ReservaDAO();</span><br><span class="line"></span><br><span class="line">    dao.Salvar(ra)</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">ServicoReservaHotel</span></span><br><span class="line">&#123;</span><br><span class="line">    ReservaHotel rh = <span class="keyword">new</span> ReservaHotel();</span><br><span class="line"></span><br><span class="line">    rh.Reservar(reserva);</span><br><span class="line"></span><br><span class="line">    ReservaDAO dao = <span class="keyword">new</span> ReservaDAO();</span><br><span class="line"></span><br><span class="line">    dao.Salvar(rh);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>Agora sim!<br>Separamos nosso código de acordo com sua responsabilidade, não temos mais uma classe de serviço fazendo todo trabalho, agora tempos uma classe de serviço que irá cuidar da reserva de hotel,outra para cuidar da reserva aerea e uma para ficar responsável por salvar no banco de dados.</p>
+<p>Utilizei a interface para auxiliar na abstração, mas não irei aprofundar no assunto agora, pois iremos aborda-lo mais adiante, em um outro Princípio.</p>
+<p>Uma coisa que pode ser observada, é que optei transformar os métodos privados em classes, pois auxilia no reuso do codigo. Um método grande, jámais deve ser quebrado em métodos pequenos, pois vai atrapalhar no reuso. provavelmente ferir o SRP, Métodos privados devem ser utilizados somente para auxilizar na leitura do codígo.</p>
+
+      
+    </div>
+  </div>
+</article>
+
+  
+    
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      <div class="meta">
+  
+      <span class="date">
           27-01-2018
       </span>
   
@@ -228,7 +296,7 @@
         </ul>
 
         <ul class="copyright">
-            <li>&copy; mfilho. All rights reserved</li>
+            <li>&copy; MF. All rights reserved</li>
             <li>Design: <a href="http://html5up.net" target="_blank">HTML5 UP</a></li>
             <li>Hexo: <a href="http://livingos.com/" target="_blank">Tim Hyde</a></li>
         </ul>
